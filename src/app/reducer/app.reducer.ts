@@ -1,4 +1,4 @@
-import { Detail } from '../models/Detail';
+import {Detail} from '../models/Detail';
 import {CounterStore} from '../store/counter.store';
 import {CounterActionTypes} from '../constant/counter.constant';
 
@@ -35,6 +35,20 @@ export function reducer(state = initialState, action) {
           } as Detail)
         ]
       };
+
+    case CounterActionTypes.IncrementByHundred:
+      return {
+        ...state,
+        count: state.count + action.payload,
+        details: [
+          ...state.details,
+          ({
+            date: new Date(),
+            userAction: 'increment by hundred'
+          } as Detail)
+        ]
+      };
+
     case CounterActionTypes.Decrement:
       return {
         ...state,
@@ -59,7 +73,21 @@ export function reducer(state = initialState, action) {
             userAction: 'decrement by ten'
           } as Detail)
         ]
-      }
+      };
+
+    case CounterActionTypes.DecrementByHundred:
+      return {
+        ...state,
+        count: state.count - action.payload,
+        details: [
+          ...state.details,
+          ({
+            date: new Date(),
+            userAction: 'increment by hundred'
+          } as Detail)
+        ]
+      };
+
     default:
       return state;
   }

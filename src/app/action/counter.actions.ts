@@ -11,6 +11,11 @@ export class IncrementCounterByTen implements Action {
   payload = 10;
 }
 
+export class IncrementCounterByHundred implements Action {
+  type = CounterActionTypes.IncrementByHundred;
+  payload = 100;
+}
+
 export class DecrementCounter implements Action {
   type = CounterActionTypes.Decrement;
   payload = 1;
@@ -19,4 +24,9 @@ export class DecrementCounter implements Action {
 export class DecrementCounterByTen implements Action {
   type = CounterActionTypes.DecrementByTen;
   payload = 10;
+}
+
+export class DecrementCounterByHundred implements Action {
+  type = CounterActionTypes.DecrementByHundred;
+  payload = 100;
 }

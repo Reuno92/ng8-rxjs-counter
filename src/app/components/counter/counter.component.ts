@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {select, Store} from '@ngrx/store';
-import {Detail} from '../models/Detail';
+import {Detail} from '../../models/Detail';
 import {
   DecrementCounter,
   DecrementCounterByTen,
   IncrementCounter,
-  IncrementCounterByTen} from '../action/counter.actions';
+  IncrementCounterByTen,
+  IncrementCounterByHundred, DecrementCounterByHundred
+} from '../../action/counter.actions';
 
 @Component({
   selector: 'app-counter',
@@ -31,17 +33,39 @@ export class CounterComponent implements OnInit {
   }
 
   public increment(event): void {
-    if (event.shiftKey === true) {
+
+    const shiftAltPressed = event.shiftKey === true && event.altKey === true;
+    const shiftPressed = event.shiftKey === true && event.altKey === false;
+    const justClick = event.shiftKey === false && event.altKey === false;
+
+    if (shiftAltPressed) {
+      this.store.dispatch(new IncrementCounterByHundred());
+    }
+
+    if (shiftPressed) {
       this.store.dispatch(new IncrementCounterByTen());
-    } else {
+    }
+
+    if (justClick) {
       this.store.dispatch(new IncrementCounter());
     }
   }
 
   public decrement(event): void {
-    if (event.shiftKey === true) {
+
+    const shiftAltPressed = event.shiftKey === true && event.altKey === true;
+    const shiftPressed = event.shiftKey === true && event.altKey === false;
+    const justClick = event.shiftKey === false && event.altKey === false;
+
+    if (shiftAltPressed) {
+      this.store.dispatch(new DecrementCounterByHundred());
+    }
+
+    if (shiftPressed) {
       this.store.dispatch(new DecrementCounterByTen());
-    } else {
+    }
+
+    if (justClick) {
       this.store.dispatch(new DecrementCounter());
     }
   }
