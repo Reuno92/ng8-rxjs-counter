@@ -33,14 +33,17 @@ export class CounterComponent implements OnInit {
   }
 
   public counterActionUser(interaction, event) {
-    const increment = interaction === 'increment';
-    const decrement = interaction === 'decrement';
+
+    const possibleInteraction: Array<string> = ['increment', 'decrement'];
+
+    const increment = interaction === possibleInteraction[0];
+    const decrement = interaction === possibleInteraction[1];
 
     const shiftAltPressed = event.shiftKey === true && event.altKey === true;
     const shiftPressed = event.shiftKey === true && event.altKey === false;
     const justClick = event.shiftKey === false && event.altKey === false;
 
-    if (!interaction || !increment && !decrement) {
+    if (!interaction || !possibleInteraction.includes(interaction)) {
       throw new Error('Interaction not defined');
     }
 
