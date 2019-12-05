@@ -1,4 +1,9 @@
-export interface CounterStore {
-  count: number;
-  title: string;
+export class CounterStore {
+
+  constructor(
+    public count: number,
+    public title: string
+  ) {
+  }
+
 }
