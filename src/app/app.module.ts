@@ -6,8 +6,9 @@ import { AppComponent } from './app.component';
 import { CounterComponent } from './counter/counter.component';
 
 import { StoreModule } from '@ngrx/store';
+import {reducer} from './reducer/app.reducer';
 const NGRX_MODULE = [
-  StoreModule
+  StoreModule.forRoot({appState: reducer})
 ];
 
 @NgModule({

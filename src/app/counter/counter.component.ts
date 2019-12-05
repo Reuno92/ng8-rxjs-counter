@@ -17,13 +17,11 @@ export class CounterComponent implements OnInit {
   public ngOnInit(): void {
   }
 
-  public increment(): number {
-    return this.total += 1;
+  public increment(): void {
     this.store.dispatch({ type: 'INCREMENT', payload: 1});
   }
 
-  public decrement(): number {
-    return this.total -= 1;
-    this.store.dispatch({type: 'DECREMENT', payload: -1})
+  public decrement(): void {
+    this.store.dispatch({type: 'DECREMENT', payload: 1});
   }
 }
