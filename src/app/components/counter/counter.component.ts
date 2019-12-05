@@ -32,40 +32,39 @@ export class CounterComponent implements OnInit {
       });
   }
 
-  public increment(event): void {
+  public counterActionUser(interaction, event) {
+    const increment = interaction === 'increment';
+    const decrement = interaction === 'decrement';
 
     const shiftAltPressed = event.shiftKey === true && event.altKey === true;
     const shiftPressed = event.shiftKey === true && event.altKey === false;
     const justClick = event.shiftKey === false && event.altKey === false;
 
-    if (shiftAltPressed) {
+    if (!interaction || !increment && !decrement) {
+      throw new Error('Interaction not defined');
+    }
+
+    if (increment && shiftAltPressed) {
       this.store.dispatch(new IncrementCounterByHundred());
     }
 
-    if (shiftPressed) {
+    if (increment && shiftPressed) {
       this.store.dispatch(new IncrementCounterByTen());
     }
 
-    if (justClick) {
+    if (increment && justClick) {
       this.store.dispatch(new IncrementCounter());
     }
-  }
 
-  public decrement(event): void {
-
-    const shiftAltPressed = event.shiftKey === true && event.altKey === true;
-    const shiftPressed = event.shiftKey === true && event.altKey === false;
-    const justClick = event.shiftKey === false && event.altKey === false;
-
-    if (shiftAltPressed) {
+    if (decrement && shiftAltPressed) {
       this.store.dispatch(new DecrementCounterByHundred());
     }
 
-    if (shiftPressed) {
+    if (decrement && shiftPressed) {
       this.store.dispatch(new DecrementCounterByTen());
     }
 
-    if (justClick) {
+    if (decrement && justClick) {
       this.store.dispatch(new DecrementCounter());
     }
   }

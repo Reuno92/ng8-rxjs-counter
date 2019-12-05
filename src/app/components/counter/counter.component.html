@@ -1,8 +1,8 @@
 <section>
   {{ total }}
   <div>
-    <button class="increment" (click)="increment($event)">+</button>
-    <button class="decrement" (click)="decrement($event)">-</button>
+    <button (click)="counterActionUser('increment', $event)" class="increment">+</button>
+    <button (click)="counterActionUser('decrement', $event)" class="decrement">-</button>
     <div *ngIf="allDetails">
       <div *ngFor="let detail of allDetails">
         {{ 'At ' + detail.date.toLocaleDateString() + ' ' + ' has been product ' + detail.userAction }}
