@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-counter',
@@ -9,7 +10,7 @@ export class CounterComponent implements OnInit {
 
   public total: number;
 
-  constructor() {
+  constructor(private store: Store<any>) {
     this.total = 0;
   }
 
