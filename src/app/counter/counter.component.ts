@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {select, Store} from '@ngrx/store';
 import {Detail} from '../models/Detail';
-import {DecrementCounter, IncrementCounter, IncrementCounterByTen} from '../action/counter.actions';
+import {
+  DecrementCounter,
+  DecrementCounterByTen,
+  IncrementCounter,
+  IncrementCounterByTen} from '../action/counter.actions';
 
 @Component({
   selector: 'app-counter',
@@ -27,7 +31,6 @@ export class CounterComponent implements OnInit {
   }
 
   public increment(event): void {
-    console.log(event.shiftKey);
     if (event.shiftKey === true) {
       this.store.dispatch(new IncrementCounterByTen());
     } else {
@@ -35,7 +38,11 @@ export class CounterComponent implements OnInit {
     }
   }
 
-  public decrement(): void {
-    this.store.dispatch(new DecrementCounter());
+  public decrement(event): void {
+    if (event.shiftKey === true) {
+      this.store.dispatch(new DecrementCounterByTen());
+    } else {
+      this.store.dispatch(new DecrementCounter());
+    }
   }
 }

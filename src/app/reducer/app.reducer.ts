@@ -48,6 +48,18 @@ export function reducer(state = initialState, action) {
         ]
       };
 
+    case CounterActionTypes.DecrementByTen:
+      return {
+        ...state,
+        count: state.count - action.payload,
+        details: [
+          ...state.details,
+          ({
+            date: new Date(),
+            userAction: 'decrement by ten'
+          } as Detail)
+        ]
+      }
     default:
       return state;
   }
