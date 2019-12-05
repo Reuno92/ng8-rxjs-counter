@@ -19,9 +19,11 @@ export class CounterComponent implements OnInit {
 
   public increment(): number {
     return this.total += 1;
+    this.store.dispatch({ type: 'INCREMENT', payload: 1});
   }
 
   public decrement(): number {
     return this.total -= 1;
+    this.store.dispatch({type: 'DECREMENT', payload: -1})
   }
 }
