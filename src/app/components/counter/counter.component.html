@@ -1,14 +1,41 @@
-<section>
-  {{ total }}
-  <div>
-    <button (click)="counterActionUser('increment', $event)" class="increment">+</button>
-    <button (click)="counterActionUser('decrement', $event)" class="decrement">-</button>
-    <button (click)="counterActionUser('reset', $event)" class="reset">reset</button>
-    <ul *ngIf="allDetails">
-      <li *ngFor="let detail of allDetails">
-        {{ 'At ' + detail.date.toLocaleDateString() + ' ' + ' has been product ' + detail.userAction }}
+<section class="container">
+  <h1>Counter</h1>
+  <div class="input-group my-2">
+
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="counter">Counter</label>
+    </div>
+
+    <input [value]="total" class="form-control" disabled id="counter" type="number"/>
+
+    <div class="btn-group ml-2">
+      <button (click)="counterActionUser('increment', $event)" class="btn btn-sm btn-success"><i
+        class="icon ion-md-add-circle"></i></button>
+      <button (click)="counterActionUser('decrement', $event)" class="btn btn-sm btn-warning"><i
+        class="icon ion-md-remove-circle"></i></button>
+      <button (click)="counterActionUser('reset', $event)" class="btn btn-sm btn-danger"><i
+        class="icon ion-md-refresh"></i></button>
+    </div>
+
+  </div>
+
+  <p class="alert alert-info">
+    Instruction: <b>Shift + Click</b>: increase/decrease by ten | <b>Shift + Alt + Click</b>: increase/decrease by
+    hundred | Can't be under to zero.
+  </p>
+
+  <section *ngIf="allDetails.length !== 0">
+    <h1>Last five actions</h1>
+    <ul class="list-group">
+      <li *ngFor="let detail of allDetails | slice:-5:allDetails.length"
+          class="list-group-item list-group-item-{{detail?.range}} justify-content-between">
+        <p class="m-0"><span class="mr-3"><i
+          class="icon ion-ios-{{ detail?.trending }}"></i></span> {{ 'At ' + detail?.date.toLocaleDateString() + ' ' + detail?.date.toLocaleTimeString() + ' has been product ' + detail?.userAction }}
+        </p>
       </li>
     </ul>
-  </div>
+  </section>
+
+
 </section>
 

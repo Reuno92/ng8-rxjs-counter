@@ -18,7 +18,9 @@ export function reducer(state = initialState, action) {
           ...state.details,
           ({
             date: new Date(),
-            userAction: 'increment by one'
+            userAction: 'increment by one',
+            range: 'success',
+            trending: 'trending-up'
           } as Detail)
         ]
       };
@@ -31,7 +33,9 @@ export function reducer(state = initialState, action) {
           ...state.details,
           ({
             date: new Date(),
-            userAction: 'increment by ten'
+            userAction: 'increment by ten',
+            range: 'success',
+            trending: 'trending-up'
           } as Detail)
         ]
       };
@@ -44,7 +48,9 @@ export function reducer(state = initialState, action) {
           ...state.details,
           ({
             date: new Date(),
-            userAction: 'increment by hundred'
+            userAction: 'increment by hundred',
+            range: 'success',
+            trending: 'trending-up'
           } as Detail)
         ]
       };
@@ -57,7 +63,9 @@ export function reducer(state = initialState, action) {
           ...state.details,
           ({
             date: new Date(),
-            userAction: 'decrement by one'
+            userAction: 'decrement by one',
+            range: 'warning',
+            trending: 'trending-down'
           } as Detail)
         ]
       };
@@ -70,7 +78,9 @@ export function reducer(state = initialState, action) {
           ...state.details,
           ({
             date: new Date(),
-            userAction: 'decrement by ten'
+            userAction: 'decrement by ten',
+            range: 'warning',
+            trending: 'trending-down'
           } as Detail)
         ]
       };
@@ -83,7 +93,9 @@ export function reducer(state = initialState, action) {
           ...state.details,
           ({
             date: new Date(),
-            userAction: 'increment by hundred'
+            userAction: 'increment by hundred',
+            range: 'warning',
+            trending: 'trending-down'
           } as Detail)
         ]
       };
@@ -96,7 +108,9 @@ export function reducer(state = initialState, action) {
           ...state.details,
           ({
             date: new Date(),
-            userAction: 'reset to zero'
+            userAction: 'reset to zero',
+            range: 'danger',
+            trending: 'arrow-round-down'
           })
         ]
       };
