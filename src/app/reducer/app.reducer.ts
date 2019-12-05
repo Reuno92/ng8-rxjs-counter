@@ -1,5 +1,6 @@
 import { Detail } from '../models/Detail';
 import {CounterStore} from '../store/counter.store';
+import {CounterActionTypes} from '../constant/counter.constant';
 
 const initialState: CounterStore = {
   count: 0,
@@ -9,7 +10,7 @@ const initialState: CounterStore = {
 
 export function reducer(state = initialState, action) {
   switch (action.type) {
-    case '[Counter] Increment':
+    case CounterActionTypes.Increment:
       return {
         ...state,
         count: state.count + action.payload,
@@ -22,7 +23,19 @@ export function reducer(state = initialState, action) {
         ]
       };
 
-    case '[Counter] Decrement':
+    case CounterActionTypes.IncrementByTen:
+      return {
+        ...state,
+        count: state.count + action.payload,
+        details: [
+          ...state.details,
+          ({
+            date: new Date(),
+            userAction: 'increment by ten'
+          } as Detail)
+        ]
+      };
+    case CounterActionTypes.Decrement:
       return {
         ...state,
         count: state.count - action.payload,
@@ -34,6 +47,7 @@ export function reducer(state = initialState, action) {
           } as Detail)
         ]
       };
+
     default:
       return state;
   }
