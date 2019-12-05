@@ -1,9 +1,7 @@
-export class CounterStore {
+import {Detail} from '../models/Detail';
 
-  constructor(
-    public count: number,
-    public title: string
-  ) {
-  }
-
+export interface CounterStore {
+  count: number;
+  title: string;
+  details: Array<Detail>;
 }

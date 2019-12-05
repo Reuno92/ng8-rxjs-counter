@@ -6,9 +6,14 @@ import { AppComponent } from './app.component';
 import { CounterComponent } from './counter/counter.component';
 
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {reducer} from './reducer/app.reducer';
 const NGRX_MODULE = [
-  StoreModule.forRoot({counterState: reducer})
+  StoreModule.forRoot({counterState: reducer}),
+  StoreDevtoolsModule.instrument({
+    name: 'Counter devtools',
+    maxAge: 15
+  })
 ];
 
 @NgModule({

@@ -3,6 +3,12 @@
   <div>
     <button (click)="increment()">+</button>
     <button (click)="decrement()">-</button>
+    <div *ngIf="allDetails">
+      <div *ngFor="let detail of allDetails">
+        {{ 'At ' + detail.date.toLocaleDateString() + ' ' +
+      ' has been product ' + detail.userAction }}
+      </div>
+    </div>
   </div>
 </section>
 
