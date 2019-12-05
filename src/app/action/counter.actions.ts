@@ -30,3 +30,8 @@ export class DecrementCounterByHundred implements Action {
   type = CounterActionTypes.DecrementByHundred;
   payload = 100;
 }
+
+export class ResetCounter implements Action {
+  type = CounterActionTypes.Reset;
+  payload = 0;
+}

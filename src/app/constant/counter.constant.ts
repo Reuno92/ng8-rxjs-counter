@@ -5,4 +5,5 @@ export enum CounterActionTypes {
   DecrementByTen = '[Counter] Decrement by 10',
   IncrementByHundred = '[Counter] Increment by 100',
   DecrementByHundred = '[Counter] Decrement by 100',
+  Reset = '[Counter] Reset'
 }

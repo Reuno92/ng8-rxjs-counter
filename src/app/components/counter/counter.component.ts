@@ -6,7 +6,9 @@ import {
   DecrementCounterByTen,
   IncrementCounter,
   IncrementCounterByTen,
-  IncrementCounterByHundred, DecrementCounterByHundred
+  IncrementCounterByHundred,
+  DecrementCounterByHundred,
+  ResetCounter
 } from '../../action/counter.actions';
 
 @Component({
@@ -32,12 +34,13 @@ export class CounterComponent implements OnInit {
       });
   }
 
-  public counterActionUser(interaction, event) {
+  public counterActionUser(interaction, event): any {
 
-    const possibleInteraction: Array<string> = ['increment', 'decrement'];
+    const possibleInteraction: Array<string> = ['increment', 'decrement', 'reset'];
 
     const increment = interaction === possibleInteraction[0];
     const decrement = interaction === possibleInteraction[1];
+    const reset = interaction === possibleInteraction[2];
 
     const shiftAltPressed = event.shiftKey === true && event.altKey === true;
     const shiftPressed = event.shiftKey === true && event.altKey === false;
@@ -45,6 +48,11 @@ export class CounterComponent implements OnInit {
 
     if (!interaction || !possibleInteraction.includes(interaction)) {
       throw new Error('Interaction not defined');
+      return;
+    }
+
+    if (reset) {
+      this.store.dispatch(new ResetCounter());
     }
 
     if (increment && shiftAltPressed) {

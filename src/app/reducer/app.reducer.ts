@@ -88,6 +88,19 @@ export function reducer(state = initialState, action) {
         ]
       };
 
+    case CounterActionTypes.Reset:
+      return {
+        ...state,
+        count: state.count = action.payload,
+        details: [
+          ...state.details,
+          ({
+            date: new Date(),
+            userAction: 'reset to zero'
+          })
+        ]
+      };
+
     default:
       return state;
   }

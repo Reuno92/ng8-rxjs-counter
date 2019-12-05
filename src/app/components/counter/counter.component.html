@@ -3,11 +3,12 @@
   <div>
     <button (click)="counterActionUser('increment', $event)" class="increment">+</button>
     <button (click)="counterActionUser('decrement', $event)" class="decrement">-</button>
-    <div *ngIf="allDetails">
-      <div *ngFor="let detail of allDetails">
+    <button (click)="counterActionUser('reset', $event)" class="reset">reset</button>
+    <ul *ngIf="allDetails">
+      <li *ngFor="let detail of allDetails">
         {{ 'At ' + detail.date.toLocaleDateString() + ' ' + ' has been product ' + detail.userAction }}
-      </div>
-    </div>
+      </li>
+    </ul>
   </div>
 </section>
 
