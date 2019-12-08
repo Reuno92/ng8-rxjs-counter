@@ -1,6 +1,7 @@
 import {Detail} from '../models/Detail';
 import {CounterStore} from '../store/counter.store';
 import {CounterActionTypes} from '../constant/counter.constant';
+import {CountersAction} from '../action/counter.actions';
 
 const initialState: CounterStore = {
   count: 0,
@@ -8,7 +9,7 @@ const initialState: CounterStore = {
   details: Array<Detail>()
 };
 
-export function reducer(state = initialState, action) {
+export function reducer(state = initialState, action: CountersAction) {
   switch (action.type) {
     case CounterActionTypes.Increment:
       return {

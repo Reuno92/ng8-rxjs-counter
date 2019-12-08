@@ -35,3 +35,6 @@ export class ResetCounter implements Action {
   type = CounterActionTypes.Reset;
   payload = 0;
 }
+
+export type CountersAction = IncrementCounter | DecrementCounter | IncrementCounterByTen | DecrementCounterByTen |
+  IncrementCounterByHundred | DecrementCounterByHundred | ResetCounter;
